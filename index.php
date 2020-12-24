@@ -3,20 +3,22 @@ include "includes/header.php";
 include "includes/firebase.php"; ?>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<body onload="myFunction()">
 <div class="container my-5">
     <div class="card" style="width: 100%;">
         <div class="card-body">
             <h2>Profile Data:</h2>
             <h5 class="card-title" id='id1'>Loading...</h5>
             <p class="card-text" id='id2'></p>
-            <button class="btn btn-primary" onclick="pwd()">Password Reset</button> <a href="logout.php" class="btn btn-danger">Logout</a>
+            <button class="btn btn-primary" onclick="pwd()">Password Reset</button>
+            <button class="btn btn-primary" onclick="pwd1()">Password Reset</button> 
         </div>
     </div>
 </div>
 
 <?php include "includes/footer.php"; ?>
 <script>
-    $(document).ready(function() {
+    function myFunction() {
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 var s1 = document.getElementById('id1');
@@ -39,7 +41,7 @@ include "includes/firebase.php"; ?>
 
         });
 
-    });
+    };
 
     function pwd() {
 
@@ -56,4 +58,15 @@ include "includes/firebase.php"; ?>
         });
 
     };
+        function pwd1() {
+
+        firebase.auth().signOut().then(function() {
+            window.location = 'signIn.php';
+        }).catch(function(error) {
+            var err = document.getElementById('id');
+            err.innerHTML = error.message;
+        });
+
+    };
 </script>
+</body>

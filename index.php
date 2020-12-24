@@ -11,7 +11,7 @@ include "includes/firebase.php"; ?>
             <h5 class="card-title" id='id1'>Loading...</h5>
             <p class="card-text" id='id2'></p>
             <button class="btn btn-primary" onclick="pwd()">Password Reset</button>
-            <button class="btn btn-primary" onclick="pwd1()">Password Reset</button> 
+            <button class="btn btn-primary" onclick="pwd1()">Logout</button> 
         </div>
     </div>
 </div>
